@@ -8,8 +8,10 @@
  */
 import Vue from 'vue';
 import App from './App.vue';
+
 import UniCompositionAPI from './uni-composition-api';
 Vue.use(UniCompositionAPI);
+
 Vue.config.productionTip = false;
 const app = new App();
 app.$mount();
