@@ -1,29 +1,18 @@
+<!--
+ * @Author: Mr.Mao
+ * @Date: 2021-03-20 11:52:57
+ * @LastEditTime: 2021-03-20 16:57:12
+ * @Description: 
+ * @LastEditors: Mr.Mao
+ * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
+-->
 <template>
   <div class="list">list</div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-export default Vue.extend({
-  props: {},
-  data: () => ({}),
-  methods: {},
-  computed: {},
-  watch: {},
-
-  // 组件周期函数--监听组件挂载完毕
-  mounted() {},
-  // 组件周期函数--监听组件数据更新之前
-  beforeUpdate() {},
-  // 组件周期函数--监听组件数据更新之后
-  updated() {},
-  // 组件周期函数--监听组件激活(显示)
-  activated() {},
-  // 组件周期函数--监听组件停用(隐藏)
-  deactivated() {},
-  // 组件周期函数--监听组件销毁之前
-  beforeDestroy() {},
-});
+import { defineComponent } from '@vue/composition-api';
+export default defineComponent({});
 </script>
 
 <style lang="scss"></style>
