@@ -1,6 +1,7 @@
 # composition-api of uni-app and Vue2
 
 兼容 UniAppVue2 中 composition-api 的使用，以及提供UniApp生命周期钩子。
+
 该项目会持续更新以及维护至 uni 全面支持 vue3，composition-api。
 
 ## 多端平台兼容性
