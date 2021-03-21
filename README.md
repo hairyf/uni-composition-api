@@ -1,6 +1,7 @@
 # composition-api of uni-app and Vue2
 
 兼容 UniAppVue2 中 composition-api 的使用，以及提供UniApp生命周期钩子。
+该项目会持续更新以及维护至 uni 全面支持 vue3，composition-api。
 
 ## 多端平台兼容性
 
@@ -19,7 +20,7 @@
 ### npm & ESM
 
 ~~~
-npm i @vue/composition-api uni-composition-api -D
+npm i uni-composition-api -D
 ~~~
 
 ### main.js  introduce。
@@ -52,6 +53,21 @@ export default defineComponent({
 </script>
 
 <style lang="scss"></style>
+~~~
+
+## App.vue 注意事项
+typescript模板在入口文件中，使用 defineComponent 定义将会发生错误，原因为 uniapp 在挂载实例添加数据时读取路径不正确，所以入口文件应该使用 Vue.extend 定义文件。
+~~~js
+// App.vue
+import Vue from 'vue';
+import { onLaunch } from 'uni-composition-api';
+export default Vue.extend({
+  setup() {
+    onLaunch(() => {
+      console.log('App Launch')
+    })
+  }
+});
 ~~~
 
 ## 生命周期支持
