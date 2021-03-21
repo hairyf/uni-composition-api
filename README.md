@@ -126,6 +126,6 @@ import {
   onThemeChange,
   // 未处理的 Promise 拒绝事件监听函数(App.vue)
   onUnhandledRejection,
-} from '@/uni-composition-api';
+} from 'uni-composition-api';
 ~~~
 
