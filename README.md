@@ -39,8 +39,7 @@ Vue.use(UniCompositionAPI);
 </template>
 
 <script lnag="ts">
-import { onLoad } from 'uni-composition-api';
-import { defineComponent, ref } from '@vue/composition-api';
+import { defineComponent, ref, onLoad } from 'uni-composition-api';
 // 如使用TypeScript，你需要使用 defineComponent 使 composition-api 能正确推断 Vue 组件选项中的类型
 export default defineComponent({
   components: {},
@@ -57,7 +56,7 @@ export default defineComponent({
 
 ## 生命周期支持
 
-注意：onShareAppMessage，onShareTimeline，onAddToFavorites目前会直接覆盖原生函数，而不是添加到队列当中。
+注意：onShareAppMessage，onShareTimeline，onAddToFavorites队列会向后查找返回值, 并自动 return 该返回值。
 
 ~~~js
 import {
@@ -95,6 +94,21 @@ import {
   onNavigationBarSearchInputChanged,
   // 页面处理钩子 监听原生标题栏搜索输入框搜索事件，用户点击软键盘上的“搜索”按钮时触发。
   onNavigationBarSearchInputConfirmed,
+  // 生命周期回调 监听页面初始化
+  onInit,
+  // 监听 nvue 页面消息
+  onUniNViewMessage,
+
+  // 错误监听函数(App.vue)
+  onError,
+  // 生命周期回调 监听应用初始化(App.vue)
+  onLaunch,
+  // 页面不存在监听函数(App.vue)
+  onPageNotFound,
+  // 监听系统主题变化(App.vue)
+  onThemeChange,
+  // 未处理的 Promise 拒绝事件监听函数(App.vue)
+  onUnhandledRejection,
 } from '@/uni-composition-api';
 ~~~
 

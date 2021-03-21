@@ -103,3 +103,46 @@ export declare const onNavigationBarSearchInputConfirmed: (hook: ((event: Page.N
  * 监听原生标题栏搜索输入框点击事件
  */
 export declare const onNavigationBarSearchInputClicked: (hook: (() => void) | undefined) => void;
+/**
+ * 生命周期回调 监听页面初始化
+ *
+ * 页面初始化时触发。一个页面只会调用一次，可以在 onInit 的参数中获取打开当前页面路径中的参数。
+ * @param query 打开当前页面路径中的参数
+ */
+export declare const onInit: (hook: ((query?: AnyObject | undefined) => void) | undefined) => void;
+/**
+ * 错误监听函数
+ * 小程序发生脚本错误或 API 调用报错时触发
+ * @param error 错误信息，包含堆栈
+ */
+export declare const onError: (hook: ((error: string) => void) | undefined) => void;
+/**
+ * 生命周期回调 监听应用初始化
+ *
+ * 应用初始化完成时触发，全局只触发一次。
+ */
+export declare const onLaunch: (hook: ((options?: App.LaunchShowOption | undefined) => void) | undefined) => void;
+/**
+ * 页面不存在监听函数
+ *
+ * 应用要打开的页面不存在时触发，会带上页面信息回调该函数
+ *
+ * **注意：**
+ * 1. 如果开发者没有添加 `onPageNotFound` 监听，当跳转页面不存在时，将推入微信客户端原生的页面不存在提示页面。
+ * 2. 如果 `onPageNotFound` 回调中又重定向到另一个不存在的页面，将推入微信客户端原生的页面不存在提示页面，并且不再回调 `onPageNotFound`。
+ */
+export declare const onPageNotFound: (hook: ((options: App.PageNotFoundOption) => void) | undefined) => void;
+/**
+ * 监听系统主题变化
+ */
+export declare const onThemeChange: (hook: ((options: UniApp.OnThemeChangeCallbackResult) => void) | undefined) => void;
+/**
+ * 未处理的 Promise 拒绝事件监听函数
+ */
+export declare const onUnhandledRejection: (hook: ((options: UniApp.OnUnhandledRejectionCallbackResult) => void) | undefined) => void;
+/**
+ * 监听 nvue 页面消息
+ *
+ * nvue 页面使用 `uni.postMessage` 发送消息时触发
+ */
+export declare const onUniNViewMessage: (hook: ((options: AnyObject) => void) | undefined) => void;

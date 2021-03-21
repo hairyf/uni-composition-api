@@ -1,6 +1,6 @@
 {
   "name": "uni-composition-api",
-  "version": "0.4.0",
+  "version": "0.5.3",
   "description": "uni-composition-api",
   "main": "dist/index.js",
   "directories": {

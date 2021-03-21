@@ -1,33 +1,58 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-03-20 15:35:47
- * @LastEditTime: 2021-03-20 16:54:29
+ * @LastEditTime: 2021-03-21 12:33:15
  * @Description: 生命周期钩子
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
  */
 /** 创建钩子函数 */
-const createHook = <T = () => void>(lifecycle: string, reset?: boolean) => {
+// const createHook = <T = () => void>(lifecycle: string, reset?: boolean) => {
+//   return (hook: T) => {
+//     /** 初始化钩子容器 */
+//     const pages = getCurrentPages();
+//     const page = pages[pages.length - 1] as Record<string, any>;
+//     if (typeof page === 'undefined') {
+//       console.error(
+//         '获取当前页面实例失败, 请检查是否使用UniCli构建以及确保在页面中setup调用对应的生命周期。'
+//       );
+//       return;
+//     }
+//     if (typeof page[lifecycle] === 'undefined' || reset) {
+//       page[lifecycle] = hook;
+//       return;
+//     }
+//     if (!Array.isArray(page[lifecycle].hooks)) {
+//       const oldPageLoad = page[lifecycle];
+//       page[lifecycle] = function (...args: any[]) {
+//         page[lifecycle].hooks.forEach((hook: any) => hook(...args));
+//         oldPageLoad.bind(this);
+//       };
+//       page[lifecycle].hooks = [];
+//     }
+//     page[lifecycle].hooks.push(hook);
+//   };
+// };
+
+import { getCurrentInstance } from '@vue/composition-api';
+
+const createHook = <T = () => void>(lifecycle: string) => {
   return (hook: T) => {
     /** 初始化钩子容器 */
-    const pages = getCurrentPages();
-    const page = pages[pages.length - 1] as Record<string, any>;
-    if (typeof page[lifecycle] === 'undefined' || reset) {
-      page[lifecycle] = hook;
-      return;
+    const containerName = `__${lifecycle.toLocaleUpperCase()}_HOOKS__`;
+    const currentContext = getCurrentInstance() as Record<string, any>;
+    if (typeof currentContext === 'undefined') {
+      return console.log(
+        `读取当前实例失败, 请确保在 setup 中执行 ${lifecycle}`
+      );
     }
-    if (!Array.isArray(page[lifecycle].hooks)) {
-      const oldPageLoad = page[lifecycle];
-      page[lifecycle] = function (...args: any[]) {
-        page[lifecycle].hooks.forEach((hook: any) => hook(...args));
-        oldPageLoad.bind(this);
-      };
-      page[lifecycle].hooks = [];
+    if (Array.isArray(currentContext[containerName])) {
+      currentContext[containerName].push(hook);
+    } else {
+      currentContext[containerName] = [hook];
     }
-    page[lifecycle].hooks.push(hook);
   };
 };
-
 /**
  * 生命周期回调 监听页面加载
  *
@@ -85,15 +110,14 @@ export const onReachBottom = createHook<Page.PageInstance['onReachBottom']>(
  */
 export const onShareAppMessage = createHook<
   Page.PageInstance['onShareAppMessage']
->('onShareAppMessage', true);
+>('onShareAppMessage');
 /**
  * 用户点击右上角转发到朋友圈
  *
  * 监听右上角菜单“分享到朋友圈”按钮的行为，并自定义发享内容。
  */
 export const onShareTimeline = createHook<Page.PageInstance['onShareTimeline']>(
-  'onShareTimeline',
-  true
+  'onShareTimeline'
 );
 /**
  * 用户点击右上角收藏
@@ -102,7 +126,7 @@ export const onShareTimeline = createHook<Page.PageInstance['onShareTimeline']>(
  */
 export const onAddToFavorites = createHook<
   Page.PageInstance['onAddToFavorites']
->('onAddToFavorites', true);
+>('onAddToFavorites');
 /**
  * 页面滚动触发事件的处理函数
  *
