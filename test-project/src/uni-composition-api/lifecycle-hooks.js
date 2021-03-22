@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-03-20 15:35:47
- * @LastEditTime: 2021-03-22 16:08:01
+ * @LastEditTime: 2021-03-22 16:21:29
  * @Description: 生命周期钩子
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -17,7 +17,6 @@ const createHook = (lifecycle) => {
       throw Error(`读取当前上下文失败, 请确保在 setup 中执行 ${lifecycle}`);
     }
     const appVueLifecycleRex = /onLaunch|onError|onPageNotFound|onUnhandledRejection|onThemeChange|onUniNViewMessage/
-    console.log(containerName,currentContext.proxy.mpType)
     if (typeof currentContext.proxy.mpType === 'undefined') {
       // 当前实例为App.vue, 不存在 页面 周期函数
       if (!appVueLifecycleRex.test(lifecycle) && !/onShow|onHide/.test(lifecycle)) {
