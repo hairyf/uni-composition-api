@@ -1,7 +1,7 @@
 /*
  * @Author: Mr.Mao
  * @Date: 2021-03-20 15:35:47
- * @LastEditTime: 2021-03-21 15:36:43
+ * @LastEditTime: 2021-03-22 14:40:49
  * @Description: 生命周期钩子
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
@@ -9,37 +9,20 @@
 /** 创建钩子函数 */
 import { getCurrentInstance } from '@vue/composition-api';
 const createHook = (lifecycle) => {
-    return (hook) => {
-        /** 初始化钩子容器 */
-        const containerName = `__${lifecycle.toLocaleUpperCase()}_HOOKS__`;
-        const currentContext = getCurrentInstance();
-        const appVueLifecycleRex = /onLaunch|onError|onPageNotFound|onUnhandledRejection|onThemeChange|onUniNViewMessage/;
-        if (!currentContext) {
-            throw Error(`读取当前上下文失败, 请确保在 setup 中执行 ${lifecycle}`);
-        }
-        if (currentContext.uid === 0) {
-            // 当前实例为App.vue, 不存在 页面 周期函数
-            if (!appVueLifecycleRex.test(lifecycle) && !/onShow|onHide/.test(lifecycle)) {
-                throw Error(`当前实例不存在 ${lifecycle} 周期函数`);
-            }
-        }
-        else if (currentContext.proxy.__route__) {
-            // 当前实例为页面实例, 不存在 App.vue 周期函数
-            if (appVueLifecycleRex.test(lifecycle)) {
-                throw Error(`当前实例不存在 ${lifecycle} 周期函数`);
-            }
-        }
-        else {
-            // 当前实例为组件实例, 不存在 uniapp 周期函数
-            throw Error(`当前实例不存在 ${lifecycle} 周期函数`);
-        }
-        if (Array.isArray(currentContext.proxy[containerName])) {
-            currentContext.proxy[containerName].push(hook);
-        }
-        else {
-            currentContext.proxy[containerName] = [hook];
-        }
-    };
+  return (hook) => {
+    /** 初始化钩子容器 */
+    const containerName = `__${lifecycle.toLocaleUpperCase()}_HOOKS__`;
+    const currentContext = getCurrentInstance();
+    if (!currentContext) {
+      throw Error(`读取当前上下文失败, 请确保在 setup 中执行 ${lifecycle}`);
+    }
+    if (Array.isArray(currentContext.proxy[containerName])) {
+      currentContext.proxy[containerName].push(hook);
+    }
+    else {
+      currentContext.proxy[containerName] = [hook];
+    }
+  };
 };
 /**
  * 生命周期回调 监听页面加载
