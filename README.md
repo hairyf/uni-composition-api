@@ -1,13 +1,14 @@
 # composition-api of uni-app and Vue2
 
 兼容 UniAppVue2 中 composition-api 的使用，以及提供UniApp生命周期钩子。
+
 该项目会持续更新以及维护至 uni 全面支持 vue3，composition-api。
 
 ## 多端平台兼容性
 
 |  app   | 微信小程序 | 支付宝小程序 | 百度小程序 | 字节小程序 | QQ小程序 | 快应用 |
 | :----: | :--------: | :----------: | :--------: | :--------: | :------: | :----: |
-| 未测试 |     √      |    未测试    |   未测试   |   未测试   |  未测试  |   ×    |
+| 未测试 |     √      |    未测试    |   未测试   |   未测试   |  未测试  |  未测试  |
 
 | h5-Safari | Android Browser | 微信浏览器(Android) | QQ浏览器(Android) | Chrome |  IE  | Edge | Firefox | pc-Safari |
 | :-------: | :-------------: | :-----------------: | :---------------: | :----: | :--: | :--: | :-----: | :-------: |
@@ -128,6 +129,6 @@ import {
   onThemeChange,
   // 未处理的 Promise 拒绝事件监听函数(App.vue)
   onUnhandledRejection,
-} from '@/uni-composition-api';
+} from 'uni-composition-api';
 ~~~
 
