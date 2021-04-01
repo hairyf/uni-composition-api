@@ -20,13 +20,15 @@
 ### npm & ESM
 
 ~~~
-npm i uni-composition-api -D
+npm i uni-composition-api @vue/composition-api -D
 ~~~
 
 ### main.js  introduce。
 
 ~~~js
+import VueCompositionAPI from '@vue/composition-api';
 import UniCompositionAPI from 'uni-composition-api';
+Vue.use(VueCompositionAPI);
 Vue.use(UniCompositionAPI);
 ~~~
 
@@ -40,7 +42,8 @@ Vue.use(UniCompositionAPI);
 </template>
 
 <script lnag="ts">
-import { defineComponent, ref, onLoad } from 'uni-composition-api';
+import { onLoad } from 'uni-composition-api';
+import { defineComponent, ref } from '@vue/composition-api';
 // 如使用TypeScript，你需要使用 defineComponent 使 composition-api 能正确推断 Vue 组件选项中的类型
 export default defineComponent({
   components: {},

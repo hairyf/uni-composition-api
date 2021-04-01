@@ -1,30 +1,30 @@
 <!--
  * @Author: Mr.Mao
- * @Date: 2021-03-21 15:08:38
- * @LastEditTime: 2021-03-21 15:34:11
+ * @Date: 2021-03-22 12:43:52
+ * @LastEditTime: 2021-04-02 01:12:36
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
 -->
 <template>
-  <view class="content">
-    <view><list/></view>
-    <view>{{count}}</view>
-  </view>
+  <div class="index">{{form.count}}</div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onLoad, ref } from 'uni-composition-api';
-import List from './List.vue'
+<script>
+import { onLoad } from 'uni-composition-api';
+import { reactive, defineComponent} from '@vue/composition-api'
 export default defineComponent({
-  components: {List},
+  components: {},
   setup() {
-    // onLoad(() => {
-    //   console.log('-----')
-    // })
-    const count = ref(0)
-    return {count}
-  }
+    onLoad(() => console.log('---onload---'));
+    const form = reactive({
+      count: 1
+    })
+    setTimeout(() => {
+      form.count++
+    }, 1000)
+    return { form };
+  },
 });
 </script>
 
