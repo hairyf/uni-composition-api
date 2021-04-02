@@ -1,31 +1,26 @@
 <!--
  * @Author: Mr.Mao
  * @Date: 2021-03-22 12:43:52
- * @LastEditTime: 2021-04-02 01:22:42
+ * @LastEditTime: 2021-04-02 09:16:21
  * @Description: 
  * @LastEditors: Mr.Mao
  * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
 -->
 <template>
-  <div class="index">{{form.count}}</div>
+  <div class="index">index</div>
 </template>
 
 <script>
-import { onLoad } from 'uni-composition-api';
-import { reactive, defineComponent} from '@vue/composition-api'
-export default defineComponent({
+import { useXX } from "./hook.js";
+
+export default {
   components: {},
   setup() {
-    onLoad(() => console.log('---onload---'));
-    const form = reactive({
-      count: 1
-    })
-    setTimeout(() => {
-      form.count++
-    }, 1000)
-    return { form };
+    const aaa = useXX()
+    aaa.func()
+    return {  };
   },
-});
+};
 </script>
 
 <style>
