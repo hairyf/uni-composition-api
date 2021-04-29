@@ -46,6 +46,6 @@ export default (Vue) => {
         onUnhandledRejection: createHookMixinFuc('onUnhandledRejection'),
         onUniNViewMessage: createHookMixinFuc('onUniNViewMessage'),
     });
-    if (PLATFORM !== 'h5')
+    if (PLATFORM == 'mp-weixin')
         compositionPatch();
 };
