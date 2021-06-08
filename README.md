@@ -10,7 +10,7 @@
 | :----: | :--------: | :----------: | :--------: | :--------: | :------: | :----: |
 |    √   |     √      |    未测试    |   未测试   |   未测试   |  未测试  |  未测试  |
 
-| h5-Safari | Android Browser | 微信浏览器(Android) | QQ浏览器(Android) | Chrome |  IE  | Edge | Firefox | pc-Safari |
+| h5-Safari | Android Browser | 微信浏览器(Android) | QQ浏览器(Android) | Chrome |  IE 11+  | Edge | Firefox | pc-Safari |
 | :-------: | :-------------: | :-----------------: | :---------------: | :----: | :--: | :--: | :-----: | :-------: |
 |     √     |        √        |          √          |         √         |   √    |  √   |  √   |    √    |     √     |
 
