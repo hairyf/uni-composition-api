@@ -45,7 +45,6 @@ Vue.use(UniCompositionAPI);
 <script lnag="ts">
 import { onLoad } from 'uni-composition-api';
 import { defineComponent, ref } from '@vue/composition-api';
-// 如使用TypeScript，你需要使用 defineComponent 使 composition-api 能正确推断 Vue 组件选项中的类型
 export default defineComponent({
   components: {},
   setup() {
