@@ -1,3 +1,8 @@
+# 概述
+
+时至今日，uniapp 已全面支持 vue3，你应该使用 [uniapp-vue3](https://uniapp.dcloud.io/tutorial/vue3-basics.html) | [uniapp-vite-cli-vue3](https://ask.dcloud.net.cn/article/37834)
+uni-composition-api 已完成应有的使命，在此将其归档，望周知。
+
 # composition-api of uni-app and Vue2
 
 兼容 UniAppVue2 中 composition-api 的使用，以及提供UniApp生命周期钩子。
