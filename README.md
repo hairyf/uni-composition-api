@@ -1,4 +1,4 @@
-# 概述
+# 使用须知
 
 时至今日，uniapp 已全面支持 vue3，你应该使用 [uniapp-vue3](https://uniapp.dcloud.io/tutorial/vue3-basics.html) | [uniapp-vite-cli-vue3](https://ask.dcloud.net.cn/article/37834)
 uni-composition-api 已完成应有的使命，在此将其归档，望周知。
